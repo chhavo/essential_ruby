@@ -28,7 +28,8 @@
 #  - after we've looked at every number, the running total is the sum
 
 def sum(list_of_numbers)
-  running_total = 0
+  puts "in sum #{list_of_numbers.inspect}"
+  running_total = 0.0
   list_of_numbers.each do |number|
     running_total = running_total + number
   end
@@ -36,18 +37,12 @@ def sum(list_of_numbers)
   return running_total
 end
 
-# MEAN
-# ====
-# To find the mean of a set,
-#  - we sum up all the elements
-#  - then we divide the sum by the number of elements in the set
 
 def mean(list_of_numbers)
-  # Let's re-use the work we did above in the sum method
-
-  # ====================
-  # Your code goes here.
-  # ====================
+  puts "in mean #{list_of_numbers.inspect}"
+  sum_of_arr = sum(list_of_numbers)
+  mean_of_arr = sum_of_arr/list_of_numbers.length
+  return mean_of_arr
 end
 
 # VARIANCE
@@ -60,11 +55,15 @@ end
 #  - the variance is the mean of the squared differences
 
 def variance(list_of_numbers)
-  # Let's re-use the work we did above in the mean method
+  puts "in variance #{list_of_numbers.inspect}"
+  diff_square = 0.0
+  mean_of_arr = mean(list_of_numbers)
+  list_of_numbers.each  do |number|
+    diff_square = (number - mean_of_arr)**2 + diff_square
+  end
 
-  # ====================
-  # Your code goes here.
-  # ====================
+  diff_square = diff_square/list_of_numbers.length
+  return diff_square
 end
 
 # STANDARD DEVIATION
@@ -73,9 +72,10 @@ end
 #  - take the square root of the variance
 
 def standard_deviation(list_of_numbers)
-  # ====================
-  # Your code goes here.
-  # ====================
+  puts "in std dev #{list_of_numbers.inspect}"
+  std_dev = variance(list_of_numbers)
+  std_dev = std_dev**0.5
+  return std_dev
 end
 
 
